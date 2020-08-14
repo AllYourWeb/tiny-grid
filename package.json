@@ -1,0 +1,31 @@
+{
+  "name": "tiny-grid",
+  "version": "0.0.1",
+  "description": "A bootstrap like tiny css-grid",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "node-sass --include-path scss src/sass/styles.scss    dist/css/ayw-tiny-grid.css",
+    "build": "postcss --use autoprefixer -b 'last 2 versions' < dist/css/ayw-tiny-grid.css | postcss --use cssnano > dist/css/ayw-tiny-grid.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllYourWeb/tiny-grid.git"
+  },
+  "keywords": [
+    "css-grid",
+    "sass"
+  ],
+  "author": "Lubos Krystynek",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/AllYourWeb/tiny-grid/issues"
+  },
+  "homepage": "https://github.com/AllYourWeb/tiny-grid#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "clean-css-cli": "^4.3.0",
+    "cssnano": "^4.1.10",
+    "node-sass": "^4.14.1",
+    "postcss-cli": "^7.1.1"
+  }
+}
