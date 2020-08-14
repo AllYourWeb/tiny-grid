@@ -1,0 +1,80 @@
+// TO DO: EJECT TO variables.scss and import
+$grid-gap: 20px !default;
+
+$screen-sm: 576px !default;
+$screen-md: 768px !default;
+$screen-lg: 992px !default;
+$screen-xl: 1200px !default;
+
+/* GRID */
+
+/* CONTAINER */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+/* ROW */
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: $grid-gap;
+}
+
+@for $i from 12 through 1 {
+  .col-xs-#{$i} {
+    grid-column: span $i;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  @for $i from 12 through 1 {
+    .col-sm-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  @for $i from 12 through 1 {
+    .col-sm-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+
+@media (min-width: $screen-lg) {
+  @for $i from 12 through 1 {
+    .col-lg-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+
+@media (min-width: $screen-xl) {
+  @for $i from 12 through 1 {
+    .col-xl-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
