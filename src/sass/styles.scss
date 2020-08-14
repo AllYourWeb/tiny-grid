@@ -1,10 +1,16 @@
 // TO DO: EJECT TO variables.scss and import
 $grid-gap: 20px !default;
 
-$screen-sm: 576px !default;
-$screen-md: 768px !default;
-$screen-lg: 992px !default;
-$screen-xl: 1200px !default;
+$screens: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+);
+$screen-sm: map-get($screens, "sm") !default;
+$screen-md: map-get($screens, "md") !default;
+$screen-lg: map-get($screens, "lg") !default;
+$screen-xl: map-get($screens, "xl") !default;
 
 /* GRID */
 
@@ -16,19 +22,25 @@ $screen-xl: 1200px !default;
   padding-right: 15px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $screen-sm) {
+  .container {
+    width: 560px;
+  }
+}
+
+@media (min-width: $screen-md) {
   .container {
     width: 750px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $screen-lg) {
   .container {
     width: 970px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: $screen-xl) {
   .container {
     width: 1170px;
   }
@@ -41,40 +53,31 @@ $screen-xl: 1200px !default;
   grid-gap: $grid-gap;
 }
 
-@for $i from 12 through 1 {
-  .col-xs-#{$i} {
-    grid-column: span $i;
-  }
-}
-
-@media (min-width: $screen-sm) {
+@mixin grid-span-for-screen($screen-size-short) {
   @for $i from 12 through 1 {
-    .col-sm-#{$i} {
+    .col-#{$screen-size-short}-#{$i} {
       grid-column: span $i;
     }
   }
 }
 
-@media (min-width: $screen-md) {
-  @for $i from 12 through 1 {
-    .col-sm-#{$i} {
-      grid-column: span $i;
-    }
+@media (max-width: $screen-sm - 1) {
+  @include grid-span-for-screen("xs");
+}
+
+@each $key, $size in $screens {
+  @media (min-width: $size) {
+    @include grid-span-for-screen($key);
   }
 }
 
-@media (min-width: $screen-lg) {
-  @for $i from 12 through 1 {
-    .col-lg-#{$i} {
-      grid-column: span $i;
-    }
-  }
-}
 
-@media (min-width: $screen-xl) {
-  @for $i from 12 through 1 {
-    .col-xl-#{$i} {
-      grid-column: span $i;
-    }
-  }
-}
+/* *************** */
+/* UTILITY CLASSES */
+/* *************** */
+
+/* PADDING */
+
+/* MARGIN */
+
+
